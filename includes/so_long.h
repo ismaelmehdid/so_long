@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:05:56 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/19 22:02:04 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/20 18:08:26 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,15 @@
 int	errors_handling(int argc, char **argv);
 int	map_path_is_correct(char *path);
 int	map_is_correct(char *path);
-int	map_is_rectangle(int fd);
-int	map_is_closed(int fd);
+//int	map_is_rectangle(int fd);
+//int	map_is_closed(int fd);
 char **map_convert(int fd, char *path);
+char	*ft_strdup_c(char *buffer);
+int		count_lines(char *path);
+int		is_only_one(char *line);
+void	free_double_array(char **array);
+char	**map_croping(char **map);
+void	map_height(char **map, int *height, int *indexStart, int *indexEnd);
+
 
 #endif
