@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:57:31 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/21 19:57:12 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/23 16:48:28 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,27 @@ void	display_double_array(char **array)
 	}
 }
 
-int	map_is_correct(char *path)
+char	**map_is_correct(char *path)
 {
 	int		fd;
 	char	**map;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (0);
+		return (NULL);
 	map = map_convert(fd, path);
 	if (!map)
-		return (0);
+		return (NULL);
 	map = map_croping(map);
 	if (!map)
-		return (0);
+		return (NULL);
 	display_double_array(map);
-	if (!map_is_rectangle(map) || !map_is_closed(map) || !map_props_nbr(map))
+	if (!map_is_rectangle(map) || !map_is_closed(map) || !map_props_nbr(map)) //todo: floodfill
 	{
 		free_double_array(map);
-		return (0);
+		return (NULL);
 	}
-	free_double_array(map);
-	return (1);
+	return (map);
 }
 
 char **map_convert(int fd, char *path)
