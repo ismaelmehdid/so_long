@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:14:53 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/23 16:36:35 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/24 22:54:53 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,3 @@ int	map_props_nbr(char **map)
 		return (0);
 	return (1);
 }
-

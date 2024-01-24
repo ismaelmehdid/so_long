@@ -6,13 +6,13 @@
 #    By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 18:18:27 by ismaelmehdi       #+#    #+#              #
-#    Updated: 2024/01/23 18:18:33 by ismaelmehdi      ###   ########.fr        #
+#    Updated: 2024/01/24 21:00:50 by ismaelmehdi      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS = ${wildcard srcs/errors_handling/*.c srcs/*.c} \
+SRCS = ${wildcard srcs/errors_handling/*.c srcs/*.c srcs/render/*.c} \
 		includes/get_next_line/get_next_line.c \
 		includes/get_next_line/get_next_line_utils.c
 

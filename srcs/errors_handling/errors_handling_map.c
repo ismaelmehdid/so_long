@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:57:31 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/23 16:48:28 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/24 23:00:27 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ char	**map_is_correct(char *path)
 	if (!map)
 		return (NULL);
 	display_double_array(map);
-	if (!map_is_rectangle(map) || !map_is_closed(map) || !map_props_nbr(map)) //todo: floodfill
+	if (!map_is_rectangle(map) || !map_is_closed(map)
+		|| !map_props_nbr(map))
 	{
 		free_double_array(map);
 		return (NULL);
@@ -73,7 +74,7 @@ char	**map_is_correct(char *path)
 	return (map);
 }
 
-char **map_convert(int fd, char *path)
+char	**map_convert(int fd, char *path)
 {
 	char	**map;
 	char	*line;
@@ -100,16 +101,16 @@ char	**map_croping(char **map)
 {
 	char	**croped;
 	int		height;
-	int		indexStart;
-	int		indexEnd;
+	int		index_start;
+	int		index_end;
 	int		j;
-	
+
 	j = 0;
-	map_height(map, &height, &indexStart, &indexEnd); //moche
+	map_height(map, &height, &index_start, &index_end);
 	croped = malloc(sizeof(char *) * (height + 1));
-	while (indexStart <= indexEnd && map[indexStart] && croped)
+	while (index_start <= index_end && map[index_start] && croped)
 	{
-		croped[j] = ft_strdup(map[indexStart++]);
+		croped[j] = ft_strdup(map[index_start++]);
 		if (!croped[j++])
 		{
 			free_double_array(croped);

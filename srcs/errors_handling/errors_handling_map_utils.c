@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:40:47 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/20 20:20:47 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/24 22:53:42 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*ft_strdup_c(char *buffer)
 void	map_height(char **map, int *height, int *indexStart, int *indexEnd)
 {
 	int	i;
-	
+
 	i = 0;
 	*height = 0;
 	*indexStart = 0;

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_handling.c                                  :+:      :+:    :+:   */
+/*   render_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 17:15:42 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/24 22:56:11 by ismaelmehdi      ###   ########.fr       */
+/*   Created: 2024/01/24 20:19:24 by ismaelmehdi       #+#    #+#             */
+/*   Updated: 2024/01/24 22:53:22 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-char	**errors_handling(int argc, char **argv)
+int	double_array_size(char **map)
 {
-	char	**map;
+	int	i;
 
-	map = NULL;
-	if (argc != 2)
-		return (NULL);
-	map = map_path_is_correct(argv[1]);
+	i = 0;
 	if (!map)
-		return (NULL);
-	map = map_is_correct(argv[1]);
-	if (!map)
-		return (NULL);
-	return (map);
+		return (0);
+	while (map[i])
+		i++;
+	return (i);
 }

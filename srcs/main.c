@@ -6,38 +6,31 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:05:45 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/23 19:55:16 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/24 22:48:31 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	double_array_lenght(char **map)
-{
-	int	i;
-
-	i = 0;
-	if (!map)
-		return (0);
-	while (map[i])
-		i++;
-	return (i);
-}
-
 int	main(int argc, char **argv)
 {
 	char	**map;
-	void	*mlx;
+	t_game	game;
 
-	if (!(map = errors_handling(argc, argv)))
+	map = errors_handling(argc, argv);
+	if (!map)
 	{
 		write(2, "Either bad arguments, or your map isn't correct\n", 48);
 		exit(EXIT_FAILURE);
 	}
-	mlx = mlx_init();
-	if(NULL == mlx)
-		return (0);
-
-	mlx_loop(mlx);
+	game_init(&game, map);
+	if (game.mlx_connection == NULL || game.mlx_window == NULL)
+	{
+		free_double_array(map);
+		exit(EXIT_FAILURE);
+	}
+	game_init_images(&game);
+	game_render(&game);
+	mlx_loop(game.mlx_connection);
 	return (0);
 }
