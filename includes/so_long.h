@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:05:56 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/24 23:01:53 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/25 21:25:51 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "minilibx-linux/mlx.h"
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
+# include <X11/keysym.h>
 # include <stdio.h> //TODO : delete
 # include <unistd.h>
 # include <stdlib.h>
@@ -34,6 +35,10 @@ typedef struct s_game{
 	void	*coin_image;
 	int		width_image;
 	int		height_image;
+	int		player_pos_x;
+	int		player_pos_y;
+	int		nb_moves;
+	int		nb_coins;
 }t_game;
 
 /* Error handling*/
@@ -58,6 +63,15 @@ int		double_array_size(char **map);
 void	game_init_images(struct s_game *game);
 void	game_render(struct s_game *game);
 void	put_image(struct s_game *game, char prop, int x, int y);
+void	get_player_pos(struct s_game *game);
 /*-------------*/
+
+void	render_up(struct s_game *game);
+void	render_down(struct s_game *game);
+void	render_left(struct s_game *game);
+void	render_right(struct s_game *game);
+void	get_nb_coins(struct s_game *game);
+
+void	program_exit(struct s_game *game);
 
 #endif
