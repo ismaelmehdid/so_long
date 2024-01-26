@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 23:16:35 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/25 22:19:22 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/26 20:28:55 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,17 @@ void	get_nb_coins(struct s_game *game)
 
 void	get_player_pos(struct s_game *game)
 {
-	char	**map;
 	int		x;
 	int		y;
 
-	map = game->map;
+	game->nb_coins = 0;
 	x = 0;
 	y = 0;
-	while (map[y])
+	while (game->map[y])
 	{
-		while (map[y][x])
+		while (game->map[y][x])
 		{
-			if (map[y][x] == 'P')
+			if (game->map[y][x] == 'P')
 			{
 				game->player_pos_x = x;
 				game->player_pos_y = y;
@@ -61,7 +60,7 @@ void	get_player_pos(struct s_game *game)
 int	handle_input(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
-		exit(EXIT_FAILURE);
+		program_exit(game);
 	else if (keysym == XK_z)
 		render_up(game);
 	else if (keysym == XK_s)
@@ -91,33 +90,5 @@ void	game_init(struct s_game *game, char **map)
 	if (game->mlx_window == NULL)
 		return ;
 	mlx_key_hook(game->mlx_window, handle_input, game);
-}
-
-void	game_init_images(struct s_game *game)
-{
-	game->wall_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/wall.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->wall_image == NULL)
-		return ;
-	game->ground_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/ground.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->ground_image == NULL)
-		return ;
-	game->exit_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/exit.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->exit_image == NULL)
-		return ;
-	game->player_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/player.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->player_image == NULL)
-		return ;
-	game->coin_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/coin.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->coin_image == NULL)
-		return ;
+	mlx_hook(game->mlx_window, 17, 0, program_exit, game);
 }

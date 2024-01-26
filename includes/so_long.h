@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:05:56 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/25 21:25:51 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/26 20:51:57 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ typedef struct s_game{
 	void	*wall_image;
 	void	*ground_image;
 	void	*exit_image;
-	void	*player_image;
+	void	*player_front_image;
+	void	*player_back_image;
+	void	*player_right_image;
+	void	*player_left_image;
 	void	*coin_image;
 	int		width_image;
 	int		height_image;
@@ -61,6 +64,7 @@ int		map_props_nbr(char **map);
 void	game_init(struct s_game *game, char **map);
 int		double_array_size(char **map);
 void	game_init_images(struct s_game *game);
+void	game_init_images_player(struct s_game *game);
 void	game_render(struct s_game *game);
 void	put_image(struct s_game *game, char prop, int x, int y);
 void	get_player_pos(struct s_game *game);
@@ -72,6 +76,6 @@ void	render_left(struct s_game *game);
 void	render_right(struct s_game *game);
 void	get_nb_coins(struct s_game *game);
 
-void	program_exit(struct s_game *game);
+int	program_exit(struct s_game *game);
 
 #endif

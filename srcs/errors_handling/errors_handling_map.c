@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:57:31 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/24 23:00:27 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/26 17:40:18 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,6 @@ int	map_path_is_correct(char *path)
 	return (1);
 }
 
-void	display_double_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	if (!array)
-		return ;
-	while (array[i])
-	{
-		printf("%s\n", array[i]);
-		i++;
-	}
-}
-
 char	**map_is_correct(char *path)
 {
 	int		fd;
@@ -64,7 +50,6 @@ char	**map_is_correct(char *path)
 	map = map_croping(map);
 	if (!map)
 		return (NULL);
-	display_double_array(map);
 	if (!map_is_rectangle(map) || !map_is_closed(map)
 		|| !map_props_nbr(map))
 	{
