@@ -3,7 +3,8 @@
 		"so_long.h": "c",
 		"get_next_line.h": "c",
 		"mlx.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"random": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

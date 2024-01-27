@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:05:56 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/26 20:51:57 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 00:30:14 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+
+typedef struct s_enemy_images{
+	void	*enemy_image_one;
+	void	*enemy_image_two;
+	void	*enemy_image_three;
+	void	*enemy_image_four;	
+}t_enemy_images;
 
 typedef struct s_game{
 	void	*mlx_connection;
@@ -42,6 +49,9 @@ typedef struct s_game{
 	int		player_pos_y;
 	int		nb_moves;
 	int		nb_coins;
+	int		enemy_pos_x;
+	int		enemy_pos_y;
+	t_enemy_images *enemy_images;
 }t_game;
 
 /* Error handling*/
@@ -61,13 +71,15 @@ int		map_props_nbr(char **map);
 /*---------------*/
 
 /*Init the game*/
-void	game_init(struct s_game *game, char **map);
+void	game_init(t_game *game, char **map, t_enemy_images *enemy_images);
 int		double_array_size(char **map);
 void	game_init_images(struct s_game *game);
 void	game_init_images_player(struct s_game *game);
+void	game_init_images_enemy(struct s_game *game);
 void	game_render(struct s_game *game);
 void	put_image(struct s_game *game, char prop, int x, int y);
 void	get_player_pos(struct s_game *game);
+int		enemy_render(struct s_game *game);
 /*-------------*/
 
 void	render_up(struct s_game *game);

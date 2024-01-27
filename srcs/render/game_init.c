@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 23:16:35 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/26 20:28:55 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 00:57:53 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,14 @@ int	handle_input(int keysym, t_game *game)
 	return (0);
 }
 
-void	game_init(struct s_game *game, char **map)
+void	game_init(t_game *game, char **map, t_enemy_images *enemy_images)
 {
 	game->map = map;
+	game->enemy_images = enemy_images;
 	get_player_pos(game);
 	get_nb_coins(game);
+	game->enemy_pos_x = 64;
+	game->enemy_pos_y = 64;
 	game->nb_moves = 0;
 	game->width_image = 64;
 	game->height_image = 64;

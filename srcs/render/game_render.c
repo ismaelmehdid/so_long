@@ -6,11 +6,28 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:07:50 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/26 21:21:56 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 01:05:48 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
+
+int	enemy_render(struct s_game *game)
+{
+	mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
+			game->enemy_images->enemy_image_one, game->enemy_pos_x,
+			game->enemy_pos_y);
+	mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
+			game->enemy_images->enemy_image_two, game->enemy_pos_x,
+			game->enemy_pos_y);
+	mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
+			game->enemy_images->enemy_image_three, game->enemy_pos_x,
+			game->enemy_pos_y);
+	mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
+			game->enemy_images->enemy_image_four, game->enemy_pos_x,
+			game->enemy_pos_y);
+	return (0);
+}
 
 void	game_render(struct s_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 21:10:07 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/26 20:54:25 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 00:48:37 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	program_exit(struct s_game *game)
 	mlx_destroy_image(game->mlx_connection, game->player_front_image);
 	mlx_destroy_image(game->mlx_connection, game->player_left_image);
 	mlx_destroy_image(game->mlx_connection, game->player_right_image);
+	mlx_destroy_image(game->mlx_connection, game->enemy_images->enemy_image_one);
+	mlx_destroy_image(game->mlx_connection, game->enemy_images->enemy_image_two);
+	mlx_destroy_image(game->mlx_connection, game->enemy_images->enemy_image_three);
+	mlx_destroy_image(game->mlx_connection, game->enemy_images->enemy_image_four);
 	mlx_destroy_image(game->mlx_connection, game->coin_image);
 	mlx_destroy_image(game->mlx_connection, game->wall_image);
 	mlx_destroy_image(game->mlx_connection, game->ground_image);
