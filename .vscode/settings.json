@@ -4,7 +4,8 @@
 		"get_next_line.h": "c",
 		"mlx.h": "c",
 		"libft.h": "c",
-		"random": "c"
+		"random": "c",
+		"algorithm": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

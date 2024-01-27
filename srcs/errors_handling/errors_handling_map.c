@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:57:31 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/26 17:40:18 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 20:41:50 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ char	**map_is_correct(char *path)
 	if (!map)
 		return (NULL);
 	if (!map_is_rectangle(map) || !map_is_closed(map)
-		|| !map_props_nbr(map))
+		|| !map_props_nbr(map) ||
+		!is_map_playable(map))
 	{
 		free_double_array(map);
 		return (NULL);

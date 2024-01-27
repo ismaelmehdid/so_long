@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 23:16:35 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 00:57:53 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 17:24:12 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	game_init(t_game *game, char **map, t_enemy_images *enemy_images)
 	game->width_image = 64;
 	game->height_image = 64;
 	game->window_width = game->width_image * ft_strlen(map[0]);
-	game->window_height = game->height_image * double_array_size(map) + 30;
+	game->window_height = game->height_image * double_array_size(map);
 	game->mlx_connection = mlx_init();
 	if (game->mlx_connection == NULL)
 		return ;

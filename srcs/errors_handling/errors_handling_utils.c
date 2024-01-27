@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:07:21 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/24 22:57:52 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 23:11:03 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,16 @@ void	free_double_array(char **array)
 		i++;
 	}
 	free (array);
+}
+
+int	height_double_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (!array)
+		return (0);
+	while(array[i])
+		i++;
+	return (i);
 }

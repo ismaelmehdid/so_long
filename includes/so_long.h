@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:05:56 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 00:30:14 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 23:14:36 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdbool.h>
+
+typedef struct s_floodfill{
+    int rows;
+    int cols;
+    bool *visited;
+    char *map;
+}t_floodfill;
 
 typedef struct s_enemy_images{
 	void	*enemy_image_one;
@@ -68,7 +76,15 @@ void	map_height(char **map, int *height, int *indexStart, int *indexEnd);
 int		map_is_closed(char **map);
 int		map_is_rectangle(char **map);
 int		map_props_nbr(char **map);
-/*---------------*/
+/*--playable?--*/
+void	get_player_spawn(char **map, int *x, int *y, int rows);
+void	init_visited(struct s_floodfill *context);
+int		get_index(int row, int col, int num_cols);
+bool	all_reachable(int columns, int rows, t_floodfill context, char **map);
+bool	is_map_playable(char **map);
+char	*concatenate_strings(char **strings);
+int		height_double_array(char **array);
+/*-------------*/
 
 /*Init the game*/
 void	game_init(t_game *game, char **map, t_enemy_images *enemy_images);
@@ -80,7 +96,6 @@ void	game_render(struct s_game *game);
 void	put_image(struct s_game *game, char prop, int x, int y);
 void	get_player_pos(struct s_game *game);
 int		enemy_render(struct s_game *game);
-/*-------------*/
 
 void	render_up(struct s_game *game);
 void	render_down(struct s_game *game);
