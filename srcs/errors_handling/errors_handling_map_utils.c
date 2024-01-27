@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:40:47 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 18:16:11 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 23:26:03 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,26 @@ void	map_height(char **map, int *height, int *indexStart, int *indexEnd)
 	}
 	(*height)++;
 	*indexEnd = i;
+}
+
+bool	props_are_valid(char	**map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[j])
+	{
+		while (map[j][i])
+		{
+			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'P'
+				&& map[j][i] != 'C' && map[j][i] != 'E')
+				return (false);
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	return (true);
 }

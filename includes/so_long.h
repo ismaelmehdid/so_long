@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:05:56 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 23:14:36 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/27 23:26:17 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	map_height(char **map, int *height, int *indexStart, int *indexEnd);
 int		map_is_closed(char **map);
 int		map_is_rectangle(char **map);
 int		map_props_nbr(char **map);
+bool	props_are_valid(char **map);
 /*--playable?--*/
 void	get_player_spawn(char **map, int *x, int *y, int rows);
 void	init_visited(struct s_floodfill *context);
