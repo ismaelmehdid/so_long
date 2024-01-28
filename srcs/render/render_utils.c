@@ -6,11 +6,11 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:19:24 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 02:09:50 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 00:45:37 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../so_long.h"
 
 int	double_array_size(char **map)
 {

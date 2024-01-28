@@ -6,11 +6,11 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:50:46 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 23:19:37 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 00:45:26 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../so_long.h"
 
 static void	flood_fill(int x, int y, struct s_floodfill *context)
 {

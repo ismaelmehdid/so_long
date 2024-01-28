@@ -6,11 +6,11 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:15:42 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 23:17:09 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 00:45:22 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../so_long.h"
 
 char	**errors_handling(int argc, char **argv)
 {

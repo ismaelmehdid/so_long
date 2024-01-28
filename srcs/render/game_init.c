@@ -6,11 +6,19 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 23:16:35 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 17:24:12 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 01:10:52 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../so_long.h"
+
+void	get_images(struct s_game *game)
+{
+	if (!game_init_images(game))
+		program_exit(game);
+	if (!game_init_images_player(game))
+		program_exit(game);
+}
 
 void	get_nb_coins(struct s_game *game)
 {
@@ -72,10 +80,9 @@ int	handle_input(int keysym, t_game *game)
 	return (0);
 }
 
-void	game_init(t_game *game, char **map, t_enemy_images *enemy_images)
+void	game_init(t_game *game, char **map)
 {
 	game->map = map;
-	game->enemy_images = enemy_images;
 	get_player_pos(game);
 	get_nb_coins(game);
 	game->enemy_pos_x = 64;
@@ -92,6 +99,7 @@ void	game_init(t_game *game, char **map, t_enemy_images *enemy_images)
 			game->window_width, game->window_height, "Incredible game");
 	if (game->mlx_window == NULL)
 		return ;
+	get_images(game);
 	mlx_key_hook(game->mlx_window, handle_input, game);
 	mlx_hook(game->mlx_window, 17, 0, program_exit, game);
 }

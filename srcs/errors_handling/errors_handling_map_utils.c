@@ -6,11 +6,11 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:40:47 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 23:26:03 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 00:59:30 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../so_long.h"
 
 int	is_only_one(char *line)
 {
@@ -95,7 +95,7 @@ void	map_height(char **map, int *height, int *indexStart, int *indexEnd)
 	*indexEnd = i;
 }
 
-bool	props_are_valid(char	**map)
+bool	props_are_valid(char **map)
 {
 	int	i;
 	int	j;

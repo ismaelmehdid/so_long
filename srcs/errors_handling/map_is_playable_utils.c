@@ -6,11 +6,11 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:19:25 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 23:11:51 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 00:45:24 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../so_long.h"
 
 void	get_player_spawn(char **map, int *x, int *y, int rows)
 {

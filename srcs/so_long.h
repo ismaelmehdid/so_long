@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:05:56 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 23:26:17 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 01:07:21 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,19 @@
 # include "minilibx-linux/mlx.h"
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
+# include "printf/ft_printf.h"
 # include <X11/keysym.h>
-# include <stdio.h> //TODO : delete
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
 
 typedef struct s_floodfill{
-    int rows;
-    int cols;
-    bool *visited;
-    char *map;
+	int		rows;
+	int		cols;
+	bool	*visited;
+	char	*map;
 }t_floodfill;
-
-typedef struct s_enemy_images{
-	void	*enemy_image_one;
-	void	*enemy_image_two;
-	void	*enemy_image_three;
-	void	*enemy_image_four;	
-}t_enemy_images;
 
 typedef struct s_game{
 	void	*mlx_connection;
@@ -59,7 +52,6 @@ typedef struct s_game{
 	int		nb_coins;
 	int		enemy_pos_x;
 	int		enemy_pos_y;
-	t_enemy_images *enemy_images;
 }t_game;
 
 /* Error handling*/
@@ -88,15 +80,13 @@ int		height_double_array(char **array);
 /*-------------*/
 
 /*Init the game*/
-void	game_init(t_game *game, char **map, t_enemy_images *enemy_images);
+void	game_init(t_game *game, char **map);
 int		double_array_size(char **map);
-void	game_init_images(struct s_game *game);
-void	game_init_images_player(struct s_game *game);
-void	game_init_images_enemy(struct s_game *game);
+int		game_init_images(struct s_game *game);
+int		game_init_images_player(struct s_game *game);
 void	game_render(struct s_game *game);
 void	put_image(struct s_game *game, char prop, int x, int y);
 void	get_player_pos(struct s_game *game);
-int		enemy_render(struct s_game *game);
 
 void	render_up(struct s_game *game);
 void	render_down(struct s_game *game);
@@ -104,6 +94,6 @@ void	render_left(struct s_game *game);
 void	render_right(struct s_game *game);
 void	get_nb_coins(struct s_game *game);
 
-int	program_exit(struct s_game *game);
+int		program_exit(struct s_game *game);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:57:31 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/27 23:26:37 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 01:00:08 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../so_long.h"
 
 int	map_path_is_correct(char *path)
 {
@@ -51,8 +51,8 @@ char	**map_is_correct(char *path)
 	if (!map)
 		return (NULL);
 	if (!map_is_rectangle(map) || !map_is_closed(map)
-		|| !map_props_nbr(map) ||
-		!is_map_playable(map) || !props_are_valid(map))
+		|| !map_props_nbr(map) || !is_map_playable(map)
+		|| !props_are_valid(map))
 	{
 		free_double_array(map);
 		return (NULL);

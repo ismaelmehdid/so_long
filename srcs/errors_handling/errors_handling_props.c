@@ -6,11 +6,11 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:14:53 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/24 22:54:53 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 00:45:13 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../so_long.h"
 
 int	map_is_rectangle(char **map)
 {

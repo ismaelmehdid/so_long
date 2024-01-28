@@ -6,11 +6,11 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:57:06 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/26 20:51:51 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 00:52:57 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../so_long.h"
 
 void	render_up(struct s_game *game)
 {
@@ -38,6 +38,7 @@ void	render_up(struct s_game *game)
 	}
 	game->player_pos_y -= 1;
 	game->nb_moves += 1;
+	ft_printf("You moved %d times\n", game->nb_moves);
 }
 
 void	render_down(struct s_game *game)
@@ -66,6 +67,7 @@ void	render_down(struct s_game *game)
 	}
 	game->player_pos_y += 1;
 	game->nb_moves += 1;
+	ft_printf("You moved %d times\n", game->nb_moves);
 }
 
 void	render_left(struct s_game *game)
@@ -94,6 +96,7 @@ void	render_left(struct s_game *game)
 	}
 	game->player_pos_x -= 1;
 	game->nb_moves += 1;
+	ft_printf("You moved %d times\n", game->nb_moves);
 }
 
 void	render_right(struct s_game *game)
@@ -122,4 +125,5 @@ void	render_right(struct s_game *game)
 	}
 	game->player_pos_x += 1;
 	game->nb_moves += 1;
+	ft_printf("You moved %d times\n", game->nb_moves);
 }
