@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:57:06 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/28 00:52:57 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 03:56:11 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,116 +14,112 @@
 
 void	render_up(struct s_game *game)
 {
-	if (game->map[game->player_pos_y - 1][game->player_pos_x] == '1')
+	if (game->map[game->player->pos_y - 1][game->player->pos_x] == '1')
 		return ;
-	mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-		game->player_back_image, (game->player_pos_x) * game->width_image,
-		(game->player_pos_y - 1) * game->height_image);
-	if (game->map[game->player_pos_y][game->player_pos_x] == 'E')
-	{
-		mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-			game->exit_image, (game->player_pos_x) * game->width_image,
-			(game->player_pos_y) * game->height_image);
-	}
+	mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+		game->player->back_image,
+		(game->player->pos_x) * game->mlx->width_image,
+		(game->player->pos_y - 1) * game->mlx->height_image);
+	if (game->map[game->player->pos_y][game->player->pos_x] == 'E')
+		mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+			game->props->exit_image,
+			(game->player->pos_x) * game->mlx->width_image,
+			(game->player->pos_y) * game->mlx->height_image);
 	else
+		mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+			game->props->ground_image,
+			(game->player->pos_x) * game->mlx->width_image,
+			(game->player->pos_y) * game->mlx->height_image);
+	if (game->map[game->player->pos_y - 1][game->player->pos_x] == 'C')
 	{
-		mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-			game->ground_image, (game->player_pos_x) * game->width_image,
-			(game->player_pos_y) * game->height_image);
+		game->map[game->player->pos_y - 1][game->player->pos_x] = '0';
+		game->player->nb_coins--;
 	}
-	if (game->map[game->player_pos_y - 1][game->player_pos_x] == 'C')
-	{
-		game->map[game->player_pos_y - 1][game->player_pos_x] = '0';
-		game->nb_coins--;
-	}
-	game->player_pos_y -= 1;
-	game->nb_moves += 1;
-	ft_printf("You moved %d times\n", game->nb_moves);
+	game->player->pos_y -= 1;
+	game->player->nb_moves += 1;
+	ft_printf("You moved %d times\n", game->player->nb_moves);
 }
 
 void	render_down(struct s_game *game)
 {
-	if (game->map[game->player_pos_y + 1][game->player_pos_x] == '1')
+	if (game->map[game->player->pos_y + 1][game->player->pos_x] == '1')
 		return ;
-	mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-		game->player_front_image, (game->player_pos_x) * game->width_image,
-		(game->player_pos_y + 1) * game->height_image);
-	if (game->map[game->player_pos_y][game->player_pos_x] == 'E')
-	{
-		mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-			game->exit_image, (game->player_pos_x) * game->width_image,
-			(game->player_pos_y) * game->height_image);
-	}
+	mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+		game->player->front_image,
+		(game->player->pos_x) * game->mlx->width_image,
+		(game->player->pos_y + 1) * game->mlx->height_image);
+	if (game->map[game->player->pos_y][game->player->pos_x] == 'E')
+		mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+			game->props->exit_image,
+			(game->player->pos_x) * game->mlx->width_image,
+			(game->player->pos_y) * game->mlx->height_image);
 	else
+		mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+			game->props->ground_image,
+			(game->player->pos_x) * game->mlx->width_image,
+			(game->player->pos_y) * game->mlx->height_image);
+	if (game->map[game->player->pos_y + 1][game->player->pos_x] == 'C')
 	{
-		mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-			game->ground_image, (game->player_pos_x) * game->width_image,
-			(game->player_pos_y) * game->height_image);
+		game->map[game->player->pos_y + 1][game->player->pos_x] = '0';
+		game->player->nb_coins--;
 	}
-	if (game->map[game->player_pos_y + 1][game->player_pos_x] == 'C')
-	{
-		game->map[game->player_pos_y + 1][game->player_pos_x] = '0';
-		game->nb_coins--;
-	}
-	game->player_pos_y += 1;
-	game->nb_moves += 1;
-	ft_printf("You moved %d times\n", game->nb_moves);
+	game->player->pos_y += 1;
+	game->player->nb_moves += 1;
+	ft_printf("You moved %d times\n", game->player->nb_moves);
 }
 
 void	render_left(struct s_game *game)
 {
-	if (game->map[game->player_pos_y][game->player_pos_x - 1] == '1')
+	if (game->map[game->player->pos_y][game->player->pos_x - 1] == '1')
 		return ;
-	mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-		game->player_left_image, (game->player_pos_x - 1) * game->width_image,
-		(game->player_pos_y) * game->height_image);
-	if (game->map[game->player_pos_y][game->player_pos_x] == 'E')
-	{
-		mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-			game->exit_image, (game->player_pos_x) * game->width_image,
-			(game->player_pos_y) * game->height_image);
-	}
+	mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+		game->player->left_image,
+		(game->player->pos_x - 1) * game->mlx->width_image,
+		(game->player->pos_y) * game->mlx->height_image);
+	if (game->map[game->player->pos_y][game->player->pos_x] == 'E')
+		mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+			game->props->exit_image,
+			(game->player->pos_x) * game->mlx->width_image,
+			(game->player->pos_y) * game->mlx->height_image);
 	else
+		mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+			game->props->ground_image,
+			(game->player->pos_x) * game->mlx->width_image,
+			(game->player->pos_y) * game->mlx->height_image);
+	if (game->map[game->player->pos_y][game->player->pos_x - 1] == 'C')
 	{
-		mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-			game->ground_image, (game->player_pos_x) * game->width_image,
-			(game->player_pos_y) * game->height_image);
+		game->map[game->player->pos_y][game->player->pos_x - 1] = '0';
+		game->player->nb_coins--;
 	}
-	if (game->map[game->player_pos_y][game->player_pos_x - 1] == 'C')
-	{
-		game->map[game->player_pos_y][game->player_pos_x - 1] = '0';
-		game->nb_coins--;
-	}
-	game->player_pos_x -= 1;
-	game->nb_moves += 1;
-	ft_printf("You moved %d times\n", game->nb_moves);
+	game->player->pos_x -= 1;
+	game->player->nb_moves += 1;
+	ft_printf("You moved %d times\n", game->player->nb_moves);
 }
 
 void	render_right(struct s_game *game)
 {
-	if (game->map[game->player_pos_y][game->player_pos_x + 1] == '1')
+	if (game->map[game->player->pos_y][game->player->pos_x + 1] == '1')
 		return ;
-	mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-		game->player_right_image, (game->player_pos_x + 1) * game->width_image,
-		(game->player_pos_y) * game->height_image);
-	if (game->map[game->player_pos_y][game->player_pos_x] == 'E')
-	{
-		mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-			game->exit_image, (game->player_pos_x) * game->width_image,
-			(game->player_pos_y) * game->height_image);
-	}
+	mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+		game->player->right_image,
+		(game->player->pos_x + 1) * game->mlx->width_image,
+		(game->player->pos_y) * game->mlx->height_image);
+	if (game->map[game->player->pos_y][game->player->pos_x] == 'E')
+		mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+			game->props->exit_image,
+			(game->player->pos_x) * game->mlx->width_image,
+			(game->player->pos_y) * game->mlx->height_image);
 	else
+		mlx_put_image_to_window(game->mlx->mlx_con, game->mlx->mlx_window,
+			game->props->ground_image,
+			(game->player->pos_x) * game->mlx->width_image,
+			(game->player->pos_y) * game->mlx->height_image);
+	if (game->map[game->player->pos_y][game->player->pos_x + 1] == 'C')
 	{
-		mlx_put_image_to_window(game->mlx_connection, game->mlx_window,
-			game->ground_image, (game->player_pos_x) * game->width_image,
-			(game->player_pos_y) * game->height_image);
+		game->map[game->player->pos_y][game->player->pos_x + 1] = '0';
+		game->player->nb_coins--;
 	}
-	if (game->map[game->player_pos_y][game->player_pos_x + 1] == 'C')
-	{
-		game->map[game->player_pos_y][game->player_pos_x + 1] = '0';
-		game->nb_coins--;
-	}
-	game->player_pos_x += 1;
-	game->nb_moves += 1;
-	ft_printf("You moved %d times\n", game->nb_moves);
+	game->player->pos_x += 1;
+	game->player->nb_moves += 1;
+	ft_printf("You moved %d times\n", game->player->nb_moves);
 }

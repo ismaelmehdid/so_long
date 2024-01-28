@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:57:31 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/28 01:00:08 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 01:43:45 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	map_path_is_correct(char *path)
 	int		fd;
 	char	*file_extention;
 
+	if (!path)
+		return (0);
 	file_extention = ".ber";
 	j = ft_strlen(file_extention) - 1;
 	i = ft_strlen(path) - 1;

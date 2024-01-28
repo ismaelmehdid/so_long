@@ -6,7 +6,7 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 20:28:42 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/28 01:03:36 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 03:52:23 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,58 @@
 
 int	game_init_images(struct s_game *game)
 {
-	game->wall_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/wall.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->wall_image == NULL)
+	game->props->wall_image = mlx_xpm_file_to_image(
+			game->mlx->mlx_con,
+			"./srcs/sprites/wall.xpm", &(game->mlx->width_image),
+			&(game->mlx->height_image));
+	if (game->props->wall_image == NULL)
 		return (0);
-	game->ground_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/ground.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->ground_image == NULL)
+	game->props->ground_image = mlx_xpm_file_to_image(
+			game->mlx->mlx_con,
+			"./srcs/sprites/ground.xpm", &(game->mlx->width_image),
+			&(game->mlx->height_image));
+	if (game->props->ground_image == NULL)
 		return (0);
-	game->exit_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/exit.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->exit_image == NULL)
+	game->props->exit_image = mlx_xpm_file_to_image(
+			game->mlx->mlx_con,
+			"./srcs/sprites/exit.xpm", &(game->mlx->width_image),
+			&(game->mlx->height_image));
+	if (game->props->exit_image == NULL)
 		return (0);
-	game->coin_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/coin.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->coin_image == NULL)
+	game->props->coin_image = mlx_xpm_file_to_image(
+			game->mlx->mlx_con,
+			"./srcs/sprites/coin.xpm", &(game->mlx->width_image),
+			&(game->mlx->height_image));
+	if (game->props->coin_image == NULL)
 		return (0);
 	return (1);
 }
 
 int	game_init_images_player(struct s_game *game)
 {
-	game->player_back_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/back.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->player_back_image == NULL)
+	game->player->back_image = mlx_xpm_file_to_image(
+			game->mlx->mlx_con,
+			"./srcs/sprites/back.xpm", &(game->mlx->width_image),
+			&(game->mlx->height_image));
+	if (game->player->back_image == NULL)
 		return (0);
-	game->player_front_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/front.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->player_front_image == NULL)
+	game->player->front_image = mlx_xpm_file_to_image(
+			game->mlx->mlx_con,
+			"./srcs/sprites/front.xpm", &(game->mlx->width_image),
+			&(game->mlx->height_image));
+	if (game->player->front_image == NULL)
 		return (0);
-	game->player_right_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/right.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->player_right_image == NULL)
+	game->player->right_image = mlx_xpm_file_to_image(
+			game->mlx->mlx_con,
+			"./srcs/sprites/right.xpm", &(game->mlx->width_image),
+			&(game->mlx->height_image));
+	if (game->player->right_image == NULL)
 		return (0);
-	game->player_left_image = mlx_xpm_file_to_image(game->mlx_connection,
-			"./srcs/sprites/left.xpm", &(game->width_image),
-			&(game->height_image));
-	if (game->player_left_image == NULL)
+	game->player->left_image = mlx_xpm_file_to_image(
+			game->mlx->mlx_con,
+			"./srcs/sprites/left.xpm", &(game->mlx->width_image),
+			&(game->mlx->height_image));
+	if (game->player->left_image == NULL)
 		return (0);
 	return (1);
 }

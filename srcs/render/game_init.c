@@ -6,25 +6,18 @@
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 23:16:35 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/28 01:10:52 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/28 03:52:23 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	get_images(struct s_game *game)
-{
-	if (!game_init_images(game))
-		program_exit(game);
-	if (!game_init_images_player(game))
-		program_exit(game);
-}
 
 void	get_nb_coins(struct s_game *game)
 {
 	int	x;
 	int	y;
 
+	game->player->nb_coins = 0;
 	x = 0;
 	y = 0;
 	while (game->map[y])
@@ -32,7 +25,7 @@ void	get_nb_coins(struct s_game *game)
 		while (game->map[y][x])
 		{
 			if (game->map[y][x] == 'C')
-				game->nb_coins++;
+				game->player->nb_coins++;
 			x++;
 		}
 		x = 0;
@@ -45,7 +38,6 @@ void	get_player_pos(struct s_game *game)
 	int		x;
 	int		y;
 
-	game->nb_coins = 0;
 	x = 0;
 	y = 0;
 	while (game->map[y])
@@ -54,8 +46,8 @@ void	get_player_pos(struct s_game *game)
 		{
 			if (game->map[y][x] == 'P')
 			{
-				game->player_pos_x = x;
-				game->player_pos_y = y;
+				game->player->pos_x = x;
+				game->player->pos_y = y;
 				return ;
 			}
 			x++;
@@ -63,6 +55,14 @@ void	get_player_pos(struct s_game *game)
 		x = 0;
 		y++;
 	}
+}
+
+void	get_images(struct s_game *game)
+{
+	if (!game_init_images(game))
+		program_exit(game);
+	if (!game_init_images_player(game))
+		program_exit(game);
 }
 
 int	handle_input(int keysym, t_game *game)
@@ -80,26 +80,30 @@ int	handle_input(int keysym, t_game *game)
 	return (0);
 }
 
-void	game_init(t_game *game, char **map)
+int	game_init(t_game *game, char **map)
 {
+	game->player = malloc(sizeof(t_player));
+	game->mlx = malloc(sizeof(t_mlx));
+	game->props = malloc(sizeof(t_props));
+	if (!game->player || !game->mlx || !game->props)
+		return (0);
 	game->map = map;
 	get_player_pos(game);
 	get_nb_coins(game);
-	game->enemy_pos_x = 64;
-	game->enemy_pos_y = 64;
-	game->nb_moves = 0;
-	game->width_image = 64;
-	game->height_image = 64;
-	game->window_width = game->width_image * ft_strlen(map[0]);
-	game->window_height = game->height_image * double_array_size(map);
-	game->mlx_connection = mlx_init();
-	if (game->mlx_connection == NULL)
-		return ;
-	game->mlx_window = mlx_new_window(game->mlx_connection,
-			game->window_width, game->window_height, "Incredible game");
-	if (game->mlx_window == NULL)
-		return ;
+	game->player->nb_moves = 0;
+	game->mlx->width_image = 64;
+	game->mlx->height_image = 64;
+	game->mlx->window_width = game->mlx->width_image * ft_strlen(map[0]);
+	game->mlx->window_height = game->mlx->height_image * double_array_size(map);
+	game->mlx->mlx_con = mlx_init();
+	if (game->mlx->mlx_con == NULL)
+		return (0);
+	game->mlx->mlx_window = mlx_new_window(game->mlx->mlx_con,
+			game->mlx->window_width, game->mlx->window_height, "Best game");
+	if (game->mlx->mlx_window == NULL)
+		return (0);
 	get_images(game);
-	mlx_key_hook(game->mlx_window, handle_input, game);
-	mlx_hook(game->mlx_window, 17, 0, program_exit, game);
+	mlx_key_hook(game->mlx->mlx_window, handle_input, game);
+	mlx_hook(game->mlx->mlx_window, 17, 0, program_exit, game);
+	return (1);
 }
