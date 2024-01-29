@@ -1,0 +1,118 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors_handling_map_utils_bonus.c                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/20 17:40:47 by ismaelmehdi       #+#    #+#             */
+/*   Updated: 2024/01/29 17:31:29 by ismaelmehdi      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../so_long_bonus.h"
+
+int	is_only_one(char *line)
+{
+	int	i;
+
+	i = 0;
+	if (!line || ft_strlen(line) == 0)
+		return (0);
+	while (line[i] != '\n' && line[i])
+	{
+		if (line[i] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	count_lines(char *path)
+{
+	int		fd;
+	char	ch;
+	int		lines;
+
+	lines = 0;
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	while (read(fd, &ch, 1) > 0)
+	{
+		if (ch == '\n')
+			lines++;
+	}
+	lines++;
+	close(fd);
+	return (lines);
+}
+
+char	*ft_strdup_c(char *buffer)
+{
+	int		size;
+	char	*copy;
+	int		i;
+
+	i = 0;
+	size = 0;
+	if (!buffer || ft_strlen(buffer) == 0)
+		return (NULL);
+	while (buffer[size] != '\n' && buffer[size])
+		size++;
+	copy = malloc(sizeof(char) * (size + 1));
+	if (!copy)
+		return (NULL);
+	while (i < size)
+	{
+		copy[i] = buffer[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
+}
+
+void	map_height(char **map, int *height, int *indexStart, int *indexEnd)
+{
+	int	i;
+
+	i = 0;
+	*height = 0;
+	*indexStart = 0;
+	*indexEnd = 0;
+	while (!is_only_one(map[i]) && map[i])
+		i++;
+	while (is_only_one(map[i]) && map[i])
+		i++;
+	*indexStart = i - 1;
+	(*height)++;
+	while (!is_only_one(map[i]) && map[i])
+	{
+		i++;
+		(*height)++;
+	}
+	(*height)++;
+	*indexEnd = i;
+}
+
+bool	props_are_valid(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[j])
+	{
+		while (map[j][i])
+		{
+			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'P'
+				&& map[j][i] != 'C' && map[j][i] != 'E' && map[j][i] != 'A')
+				return (false);
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	return (true);
+}

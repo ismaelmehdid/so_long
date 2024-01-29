@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismaelmehdid <ismaelmehdid@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:05:56 by ismaelmehdi       #+#    #+#             */
-/*   Updated: 2024/01/28 13:31:23 by ismaelmehdi      ###   ########.fr       */
+/*   Updated: 2024/01/29 20:17:04 by ismaelmehdi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "minilibx-linux/mlx.h"
 # include "get_next_line/get_next_line.h"
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <time.h>
 
 typedef struct s_floodfill{
 	int		rows;
@@ -46,13 +47,21 @@ typedef struct s_player{
 	int		pos_y;
 	int		nb_coins;
 	int		nb_moves;
+	char	move_done;
 }t_player;
 
 typedef struct s_props{
 	void	*wall_image;
 	void	*ground_image;
-	void	*exit_image;
 	void	*coin_image;
+	void	*exit_image;
+	int		exit_pos_x;
+	int		exit_pos_y;
+	void	*enemy_image_1;
+	void	*enemy_image_2;
+	void	*enemy_image_3;
+	void	*enemy_image_4;
+	void	*current_image;
 }t_props;
 
 typedef struct s_mlx{
@@ -90,18 +99,27 @@ bool	props_are_valid(char **map);
 int		game_init(t_game *game, char **map);
 int		game_init_images(struct s_game *game);
 int		game_init_images_player(struct s_game *game);
+int		game_init_images_enemy(struct s_game *game);
 void	game_render(struct s_game *game);
-void	put_image(struct s_game *game, char prop, int x, int y);
+void	game_render_props(struct s_game *game, char prop, int x, int y);
+void	game_render_player(struct s_game *game);
+void	game_render_enemy(struct s_game *game);
+void	game_render_current_enemy(struct s_game *game);
 void	render_up(struct s_game *game);
 void	render_down(struct s_game *game);
 void	render_left(struct s_game *game);
 void	render_right(struct s_game *game);
 
+void	get_exit_pos(struct s_game *game);
 void	get_player_pos(struct s_game *game);
 void	get_nb_coins(struct s_game *game);
+void	display_exit(struct s_game *game);
 
 int		program_exit(struct s_game *game);
 void	free_double_array(char **array);
 int		double_array_size(char **map);
+void	display_success(struct s_game *game);
+void	display_fail(struct s_game *game);
+void	game_init_others(t_game *game);
 
 #endif
