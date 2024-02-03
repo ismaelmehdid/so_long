@@ -7,6 +7,8 @@
 > This project is a mini-game where you must collect all the collectibles to proceed.
 > 
 > However, if you touch an enemy, you lose!
+>
+> ![minigame](https://s13.gifyu.com/images/SCQSG.gif)
 
 ## 🛠️ Usage
 
@@ -16,7 +18,7 @@ The project is written in the C language and requires the **`gcc` compiler** to 
 
 ### Instructions
 
-**1. Compiling so_long**
+**1. Compiling the minigame**
 
 To compile, go to the project folder and run :
 
@@ -24,7 +26,7 @@ To compile, go to the project folder and run :
 $ make bonus
 ```
 
-**2. Playing so_long**
+**2. Playing**
 
 ```shell
 ./so_long srcs_bonus/maps/map.ber
