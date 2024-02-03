@@ -4,8 +4,9 @@
 
 ## 💡 About the project
 
-> This project is a minigame, you have to take all the collectibles to be able to leave.
-> If you touch an enemy you lose!
+> This project is a mini-game where you must collect all the collectibles to proceed.
+> 
+> However, if you touch an enemy, you lose!
 
 ## 🛠️ Usage
 
