@@ -28,7 +28,11 @@ $ make bonus
 ```shell
 ./so_long srcs_bonus/maps/map.ber
 ```
-In the "map" directory, there are three maps that you can customize.
-Inside the "map.ber" files, the walls are represented as "1", empty spaces as "0", player spawn as "P", collectibles as "C", enemies as "A", and the exit as "E".
-Remember that each map must be surrounded by walls, contain only one player spawn (P), one exit (E), and one or more collectibles (C).
-Additionally, the map must form a rectangle and be playable, meaning that the player must be able to access all collectibles and the exit. Otherwise, you will not be able to start the game.
+In the **"map"** directory, there are three maps that you can customize.
+
+Inside the "map.ber" files, **the walls are represented as "1", empty spaces as "0", player spawn as "P", collectibles as "C", enemies as "A", and the exit as "E"**.
+
+Remember that **the map must be surrounded by walls**, **contain only one player spawn (P)**, **one exit (E)**, **and one or more collectibles (C)**.
+
+Additionally, **the map must form a rectangle and be playable**, meaning that the player must be able to access all collectibles and the exit. Otherwise, you will not be able to start the game.
+
