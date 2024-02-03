@@ -20,7 +20,7 @@ The project is written in the C language and requires the **`gcc` compiler** to 
 
 **1. Compiling the minigame**
 
-To compile, go to the project folder and run :
+To compile, go to the project directory and run :
 
 ```shell
 $ make bonus
