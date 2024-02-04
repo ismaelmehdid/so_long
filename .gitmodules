@@ -1,0 +1,3 @@
+[submodule "includes/get_next_line"]
+	path = includes/get_next_line
+	url = https://github.com/ismaelmehdid/get_next_line.git
