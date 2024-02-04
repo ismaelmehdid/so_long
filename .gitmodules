@@ -1,3 +1,12 @@
 [submodule "includes/get_next_line"]
 	path = includes/get_next_line
 	url = https://github.com/ismaelmehdid/get_next_line.git
+[submodule "includes/libft"]
+	path = includes/libft
+	url = https://github.com/ismaelmehdid/libft.git
+[submodule "includes/minilibx-linux"]
+	path = includes/minilibx-linux
+	url = https://github.com/ismaelmehdid/minilibx-linux.git
+[submodule "includes/printf"]
+	path = includes/printf
+	url = https://github.com/ismaelmehdid/printf.git
