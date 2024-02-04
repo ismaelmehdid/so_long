@@ -23,13 +23,13 @@ The project is written in the C language and requires the **`gcc` compiler** to 
 To compile, go to the project directory and run :
 
 ```shell
+$ git submodule update --init --recursive
 $ make bonus
 ```
-
 **2. Playing**
 
 ```shell
-./so_long srcs_bonus/maps/map.ber
+./so_long_bonus srcs_bonus/maps/map.ber
 ```
 In the **"map"** directory, there are three maps that you can customize.
 
